@@ -24,17 +24,14 @@ $(".table tbody").on('click', '.delete-button', function () {
     $(this).closest('tr').remove();
 })
 
-//Edit button
-
-
 
 $(document).ready(function () {
 
-    getTutorials();
+    getUsers();
 
 
-    function getTutorials() {
-        $('#tutorialsBody').html('');
+    function getUsers() {
+        $('#users-body').html('');
         $.ajax({
             url: 'https://gorest.co.in/public/v2/users',
             method: 'get',
@@ -44,47 +41,45 @@ $(document).ready(function () {
             },
             success: function (data) {
                 $(data).each(function (i, user) {
-                    $('#tutorialsBody').append($("<tr>")
+                    $('#users-body').append($("<tr>")
                         .append($("<td>").append(user.id))
                         .append($("<td>").append(user.name))
                         .append($("<td>").append(user.email))
                         .append($("<td>").append(user.gender))
                         .append($("<td>").append(user.status)));
                 });
-                //loadButtons();
+            },
+            error: function () {
+                alert("error");
             }
         });
     }
 
-    function getOneTutorial(id) {
+    function getOneUser(id) {
         $.ajax({
-            url: 'http://localhost:3000/api/tutorials/' + id,
+            url: 'https://gorest.co.in/public/v2/users/' + id,
             method: 'get',
             dataType: 'json',
             success: function (data) {
-                $($("#updateForm")[0].tutId).val(data._id);
-                $($("#updateForm")[0].updateNum).val(data.tutorialNumber);
-                $($("#updateForm")[0].updateTitle).val(data.title);
-                $($("#updateForm")[0].updateAuthor).val(data.author);
-                $($("#updateForm")[0].updateType).val(data.type);
-                $("#updateForm").show();
+                $(data).each(function (i, user) {
+                    $('#second-user-body').append($("<tr>")
+                        .append($("<td>").append(user.id))
+                        .append($("<td>").append(user.name))
+                        .append($("<td>").append(user.email))
+                        .append($("<td>").append(user.gender))
+                        .append($("<td>").append(user.status)));
+                })
+            },
+            error: function () {
+                alert("error");
             }
         });
     }
 
-    function loadButtons() {
-        $(".editTut").click(function (e) {
-            getOneTutorial($($(this)[0]).data("tutid"));
-            e.preventDefault();
-        });
-
-        $(".deleteTut").click(function (e) {
-            deleteTutorial($($(this)[0]).data("tutid"));
-            e.preventDefault();
-        })
-    }
-
-
+    $(".btn-get-user").click(function () {
+        getOneUser($(".input-id-get-user").val());
+        console.log("bla-bla");
+    });
 
 });
 
