@@ -13,14 +13,21 @@
         <div class="input-div">
             <div>
                 <div class="input">
-                    <input type="text" id="firstname" placeholder="First Name">
+                    <input type="number" id="id" placeholder="Id">
                 </div>
                 <div class="input">
-                    <input type="text" id="lastname" placeholder="Last Name">
+                    <input type="text" id="name" placeholder="Name">
                 </div>
                 <div class="input">
-                    <input type="number" id="age" placeholder="Age">
+                    <input type="text" id="email" placeholder="Email">
                 </div>
+                <div class="input">
+                    <input type="text" id="gender" placeholder="Gender">
+                </div>
+                <div class="input">
+                    <input type="text" id="status" placeholder="Status">
+                </div>
+                
                 <div class="input">
                     <button id="btnPostPerson">Post</button>
                 </div>
@@ -36,6 +43,7 @@
                         <th>email</th>
                         <th>gender</th>
                         <th>status</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody id="users-body">
@@ -65,16 +73,10 @@
                         <th>email</th>
                         <th>gender</th>
                         <th>status</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody id="second-user-body">
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
                 </tbody>
             </table>
         </div>
@@ -84,7 +86,7 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
-    <script src="index.js"></script>
+    <script src="script.js"></script>
 </body>
 
 </html>
